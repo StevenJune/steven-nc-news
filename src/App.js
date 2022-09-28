@@ -1,7 +1,4 @@
-import logo from './logo.svg';
 import "./App.css";
-//import { useState, useEffect } from "react";
-//import axios from "axios";
 import {Route, Routes,BrowserRouter} from 'react-router-dom';
 import Users from './components/Users.jsx'
 import Topics from './components/Topics.jsx'
@@ -24,9 +21,6 @@ function App() {
         <Route path='/Topics' element={<Topics />} />
         <Route path='/AllArticles' element={<AllArticles />} />
 
-        {/* <Route path='/itemsByItemId/:item_id' element={<GetItemByItemId />} />
-        <Route path='/api/items/create' element={<p>to be constructed</p>} />
-        <Route path='/api/items/delete/:item_id' element={<p>to be constructed</p>} /> */}
         <Route path='*' element={<p>404 not found !</p>} />
       </Routes>
     </div>
