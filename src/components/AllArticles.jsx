@@ -2,6 +2,9 @@ import "../App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SingleArticle from './SingleArticle.jsx';
+import {Link} from 'react-router-dom';
+
+
 
 function AllArticles() {
   const [articles, setArticles] = useState([]);
@@ -24,6 +27,7 @@ function AllArticles() {
   if (isError) return <p>Error happening........</p>
 
   return (
+    
     <section>
       <ul>
      {articles.map((article) => {
@@ -36,12 +40,13 @@ function AllArticles() {
             <h4>Create At : {article.created_at}</h4>
             <h4>Votes : {article.votes}</h4>
             <h4>Comment Votes : {article.comment_count}</h4>
-            <button type='button' onClick={() => {return <SingleArticle current_id={article.article_id} /> }} >Article Reading</button>
+            <Link to={`/Article/${article.article_id}`}>Read Article Detail </Link>
             </li>
         );
       })}
     </ul>
     </section>
+
   );
 }
 export default AllArticles;
