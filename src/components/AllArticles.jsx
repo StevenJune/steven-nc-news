@@ -15,7 +15,6 @@ function AllArticles() {
         setIsError(true)
         setIsLoading(false);
        } else {
-        console.log(response.data.articles);
         setIsLoading(false);
         setArticles(response.data.articles);
        }

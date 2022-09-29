@@ -11,12 +11,10 @@ function Topics() {
    axios 
      .get("https://be-my-news-example.herokuapp.com/api/topics")
      .then(function (response) {
-       console.log(response.statusText,'topics response obj')
        if (!response.statusText === 'OK') {
         setIsError(true)
         setIsLoading(false);
        } else {
-        console.log(response.data.topics);
         setIsLoading(false);
         setTopics(response.data.topics);
        }

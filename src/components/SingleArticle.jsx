@@ -10,12 +10,10 @@ function SingleArticle(prop) {
    axios 
      .get("https://be-my-news-example.herokuapp.com/api/articles/" + prop.current_id)
      .then(function (response) {
-       console.log(response.statusText,'response obj from singlearticle')
        if (!response.statusText === 'OK') {
         setIsError(true)
         setIsLoading(false);
        } else {
-        console.log(response.data.articles);
         setIsLoading(false);
         setArticles(response.data.articles);
        }
