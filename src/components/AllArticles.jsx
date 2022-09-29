@@ -1,3 +1,4 @@
+import "../App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SingleArticle from './SingleArticle.jsx';
@@ -24,32 +25,24 @@ function AllArticles() {
   if (isError) return <p>Error happening........</p>
 
   return (
-    <table>
-      <tr>
-        <th>Article ID</th>
-        <th>Title</th>
-        <th>Topic</th>
-        <th>Author</th>
-        <th>Create At</th>
-        <th>Votes</th>
-        <th>Comment Votes</th>
-        <th>Go Detail</th>
-      </tr>
+    <section>
+      <ul>
      {articles.map((article) => {
         return (
-            <tr key={article.article_id}>
-            <td>{article.article_id}</td>   
-            <td>{article.title}</td> 
-            <td>{article.topic}</td>
-            <td>{article.author}</td>
-            <td>Created : {article.created_at}</td>
-            <td>Votes : {article.votes}</td>
-            <td>Comment Votes : {article.comment_count}</td>
+            <li id= "AllArticlesContainer" key={article.article_id}>
+            <h4>Article ID : {article.article_id}</h4>   
+            <h4>Title : {article.title}</h4> 
+            <h4>Topic : {article.topic}</h4>
+            <h4>Author : {article.author}</h4>
+            <h4>Create At : {article.created_at}</h4>
+            <h4>Votes : {article.votes}</h4>
+            <h4>Comment Votes : {article.comment_count}</h4>
             <button type='button' onClick={() => {return <SingleArticle current_id={article.article_id} /> }} >Article Reading</button>
-          </tr>
+            </li>
         );
       })}
-    </table>
+    </ul>
+    </section>
   );
 }
 export default AllArticles;

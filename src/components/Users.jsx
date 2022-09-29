@@ -1,3 +1,4 @@
+import "../App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 //import { Route, Routes } from 'react-router-dom';
@@ -31,34 +32,34 @@ function Users(prop) {
   if (isError) return <p>Error happening........</p>
 
   return (
-    <table>
-      <tr>
-        <th>Index</th>
-        <th>User Name</th>
-        <th>Name</th>
-        {/* <th>Avatar_URL</th> */}
-        <th>Photo</th>
-        <th>Current User</th>
-      </tr>
+    <section>
+      <ul>  
      {users.map((user,index) => {
         return (
-            <tr key={index}>
-            <td>{index}</td>    
-            <td>{user.username}</td>   
-            <td>{user.name}</td> 
-            {/* <td>{user.avatar_url}</td> */}
-            <td><img src={user.avatar_url} alt="fff" width="100" height="110"></img></td> 
-            <td><button type='button' 
+            <li id="userContainer" key={index}>
+            <h4>Index : {index}</h4>
+            <h4>User Name : {user.username}</h4>   
+            <h4>Name : {user.name}</h4>
+            <img src={user.avatar_url}  width="30" height="30"></img>
+            <button type='button' 
                    onClick={() => {prop.setUser=user.username }}
-                   >Pick Me</button></td>
-          </tr>
+                   >Pick Me</button>
+          </li>
         );
       })}
-    </table>
+      </ul>
+    </section>
   );
   
 }
 
 export default Users;
-
+//<div id="myDIV">
+//  <div class="item1">1</div>
+//  <div class="item2">2</div>
+//  <div class="item3">3</div>
+//  <div class="item4">4</div>
+//  <div class="item5">500</div>
+//  <div class="item6">6</div>
+//</div>
 

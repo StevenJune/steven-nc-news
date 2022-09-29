@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ReadArticlesByTopic from './ReadArticlesByTopic.jsx';
+import "../App.css";
 
 function Topics() {
   const [topics, setTopics] = useState([]);
@@ -25,26 +26,22 @@ function Topics() {
   if (isError) return <p>Error happening........</p>
 
   return (
-    <table>
-      <tr>
-        <th>Index</th>
-        <th>Slug</th>
-        <th>Description</th>
-        <th>Get Articles</th>
-      </tr>
+    <section>
+      <ul>
      {topics.map((topic,index) => {
         return (
-            <tr key={index}>
-            <td>{index}</td>    
-            <td>{topic.slug}</td>   
-            <td>{topic.description}</td> 
-            <td><button type='button' 
+            <li id="topicContainer" key={index}>
+            <h4>Index : {index}</h4>    
+            <h4>Slug : {topic.slug}</h4>   
+            <h4>Description : {topic.description}</h4> 
+            <button type='button' 
                    onClick={() => {return (<ReadArticlesByTopic currentTopic={topic.slug} />)} }
-                   >Read Articlues</button></td>
-          </tr>
+                   >Read Articlues</button>
+          </li>
         );
       })}
-    </table>
+      </ul>
+    </section>
   );
   
 }
