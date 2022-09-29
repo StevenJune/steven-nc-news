@@ -1,21 +1,23 @@
 import "../App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import {useParams} from "react-router-dom";
 
-function SingleArticle(prop) {
-  const [articles, setArticles] = useState([prop.current_id]);
+function SingleArticle() {
+  const [article, setArticle] = useState({});
   const [isLoading,setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const {id} = useParams();
   useEffect(() => {
    axios 
-     .get("https://be-my-news-example.herokuapp.com/api/articles/" + prop.current_id)
+     .get("https://be-my-news-example.herokuapp.com/api/articles/" + id)
      .then(function (response) {
        if (!response.statusText === 'OK') {
         setIsError(true)
         setIsLoading(false);
        } else {
         setIsLoading(false);
-        setArticles(response.data.articles);
+        setArticle(response.data.article);
        }
      });
   }, []);
@@ -25,8 +27,6 @@ function SingleArticle(prop) {
   return (
     <section>
       <ul>
-     {articles.map((article) => {
-        return (
             <li key={article.article_id}>
             <h4>Article ID : {article.article_id}</h4>   
             <h4>Title : {article.title}</h4> 
@@ -35,11 +35,9 @@ function SingleArticle(prop) {
             <h4>Create At : {article.created_at}</h4>
             <h4>Votes : {article.votes}</h4>
             <h4>Comment Votes : {article.comment_count}</h4>
-            <h4>Body : {articles.body}</h4>
+            <h4>Body : {article.body}</h4>
             </li>
-        );
-      })}
-    </ul>
+      </ul>
     </section>
   );
 }

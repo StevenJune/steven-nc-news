@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 const Nav = () => {
     return (
       <nav>
-        <p><Link to='/'>Home</Link></p>
+        <a><Link to='/'>Home</Link></a>
         <p></p>
-        <p><Link to='/Users'>List Of Users</Link></p>
+        <a><Link to='/Users'>List Of Users</Link></a>
         <p></p>
         <p><Link to='/Topics'>List Of Topics</Link></p>
         <p></p>
